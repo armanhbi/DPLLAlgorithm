@@ -67,15 +67,48 @@ def getletters(formel):
                 list.append(y)
     return list
 
+def isListSame(list1, list2):
+    if len(list1) != len(list2):
+        return False
+    for i in range(len(list1)):
+        if list1[i] != list2[i]:
+            return False
+    return True
+
+def deleteDuplicates(formel):
+    newFormel = []
+    for x in formel:
+        curList = []
+        for y in x:
+            if y not in curList:
+                curList.append(y)
+        newFormel.append(curList)
+
+    newList = []
+    for x in formel:
+        mergesort(x)
+    for i in range(len(newFormel)):
+        b = True
+        j = i+1
+        while j < len(newFormel):
+            if isListSame(newFormel[i],newFormel[j]):
+                #print('same' + str(i) + str(j))
+                b = False
+                break
+            j+=1
+        if b:
+            newList.append(newFormel[i])
+    formel = newList
+    return formel
+
 def startDPLLAlgorithm(formel, abstand):
+    formel = deleteDuplicates(formel)
     print(abstand + str(formel))
     if len(formel) == 0:
         return True
     for x in formel:
         if len(x) == 0:
             return False
-
-    # DELETE DUPLICATES
 
     #OLR
     cur = []
@@ -146,6 +179,7 @@ def formelInMatrix(formel):
     return matrix
 
 #formel = "{{u}, {p, ¬y}, {y, ¬t, ¬u, ¬q}, {¬y, ¬q}, {y, p, ¬t, ¬u}, {y, q, ¬p}, {t}, {q, ¬t, ¬y, ¬u, ¬p}}"
+#formel = "{{A, ¬B, ¬C}, {A, B, D}, {A, ¬C, ¬D}, {¬A, B}, {¬A, ¬B}}"
 exits = ['exit','end','error','clear', '', ' ']
 messageDE = "Bitte gib die Formel ein.\nNutze dafür geschweifte Klammern ('{','}') und das Negationszeichen ('¬').\nDenk auch dran um die ganze Formel noch einmal die geschweiften Klammern zu setzen, sonst erkennt das Programm nicht, dass es sich um eine Klauselmenge handelt.\nBeispiel: {{a, ¬b, d}, {¬a, ¬c}, {a, ¬c}, {¬a, b, ¬d}, {¬a, ¬d}}\nUm das Programm zu beenden schreib einfach 'exit' oder drücke die Entertaste.\n"
 messageEN = "Please insert your formula.\nUse braces ('{','}') and the negationsymbol ('¬').\nDon't forget to but braces around the whole formula, otherwise the programm won't detect that it is a set of clauses.\nExample: {{a, ¬b, d}, {¬a, ¬c}, {a, ¬c}, {¬a, b, ¬d}, {¬a, ¬d}}\nTo end the program, just type 'end' or click the enter key.\n"
@@ -154,6 +188,11 @@ formel = input(messageEN)
 if formel in exits:
     exit()
 print("\n")
+
 matrix = formelInMatrix(formel)
+print(matrix)
+for x in matrix:
+    mergesort(x)
+print("SORT")
 done = startDPLLAlgorithm(matrix, "")
 print(str(done) + "\n")
