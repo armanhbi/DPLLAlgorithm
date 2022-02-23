@@ -6,4 +6,4 @@ And third and most important reason is that I can use it in my discrete structur
 But I would never do something like this of course!
 Have fun with this small project!
 
-Time needed: Around 2-3h
+Time: ~2-3h
