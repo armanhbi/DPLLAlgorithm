@@ -147,7 +147,10 @@ def formelInMatrix(formel):
 
 #formel = "{{u}, {p, ¬y}, {y, ¬t, ¬u, ¬q}, {¬y, ¬q}, {y, p, ¬t, ¬u}, {y, q, ¬p}, {t}, {q, ¬t, ¬y, ¬u, ¬p}}"
 exits = ['exit','end','error','clear', '', ' ']
-formel = input("Bitte gib die Formel ein.\nNutze dafür geschweifte Klammern ('{','}') und das Negationszeichen ('¬').\nDenk auch dran um die ganze Formel noch einmal die geschweiften Klammern zu setzen, sonst erkennt das Programm nicht, dass es sich um eine Klauselmenge handelt.\nBeispiel: {{a, ¬b, d}, {¬a, ¬c}, {a, ¬c}, {¬a, b, ¬d}, {¬a, ¬d}}\nUm das Programm zu beenden schreib einfach 'exit' oder drücke die Entertaste.\n")
+messageDE = "Bitte gib die Formel ein.\nNutze dafür geschweifte Klammern ('{','}') und das Negationszeichen ('¬').\nDenk auch dran um die ganze Formel noch einmal die geschweiften Klammern zu setzen, sonst erkennt das Programm nicht, dass es sich um eine Klauselmenge handelt.\nBeispiel: {{a, ¬b, d}, {¬a, ¬c}, {a, ¬c}, {¬a, b, ¬d}, {¬a, ¬d}}\nUm das Programm zu beenden schreib einfach 'exit' oder drücke die Entertaste.\n"
+messageEN = "Please insert your formula.\nUse braces ('{','}') and the negationsymbol ('¬').\nDon't forget to but braces around the whole formula, otherwise the programm won't detect that it is a set of clauses.\nExample: {{a, ¬b, d}, {¬a, ¬c}, {a, ¬c}, {¬a, b, ¬d}, {¬a, ¬d}}\nTo end the program, just type 'end' or click the enter key.\n"
+formel = input(messageEN)
+
 if formel in exits:
     exit()
 print("\n")
